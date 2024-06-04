@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fence Vis - A-Frame</title>
+    <meta name="description" content="Fence Vis - A-Frame">
+    
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="aframe_js/aframe-camera-transform-controls-component.js"></script>
+    <script src="aframe_js/loadPlanes.js"></script>
+    
+    <!-- https://github.com/fernandojsg/aframe-camera-transform-controls-component -->
+
+    <script>
+      
+      // https://stackoverflow.com/questions/41727501/how-to-detect-when-a-scene-is-loaded-in-a-frame
+      
+      AFRAME.registerComponent("myscene", {
+        init: async function (){ 
+          
+          await loadPlanes("NE_GREENLAND");
+          console.log("called Load planes - reg comp");
+          
+        }
+        
+      });
+
+      
+    </script>
+
+  </head>
+  <body>
+    <a-scene id="scene" camera-transform-controls myscene>
+      <a-assets id="assets">
+        <img id="sky" src="galaxy-half.jpg">
+      </a-assets>
+
+      <a-entity id="cameraRig" mycamera>
+        <!-- camera -->
+        <a-entity id="camera" camera wasd-controls look-controls orbit-controls></a-entity>
+        <a-entity id="lefthand" camera-transform-controls-hand="hand:left" vive-controls="hand: left" oculus-touch-controls="hand: left" windows-motion-controls="hand: left"></a-entity>
+        <a-entity id="righthand" camera-transform-controls-hand="hand:right" vive-controls="hand: right" oculus-touch-controls="hand: right" windows-motion-controls="hand: right"></a-entity>
+      </a-entity>
+
+      
+      <a-entity id = "worldWrapper">
+        <a-entity id="placePlanes">
+  
+        </a-entity>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

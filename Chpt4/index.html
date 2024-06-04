@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<meta charset="utf-8">
+<!-- Include the Leaflet Libraries -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+
+<head>
+<title>Greenland Fence Diagrams</title>
+</head>
+
+    <div id="map" style="width: 100%; height: 900px; position: relative; outline: none;"></div>
+
+</body>
+
+
+<script>
+    var map = L.map('map').setView([76.100796, -38.737863], 4);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    /*    
+    function onMapClick(e) {
+        alert("You clicked the map at " + e.latlng);
+        console.log(map.getZoom());
+    }
+
+    map.on('click', onMapClick);
+    */
+
+    var NE_GREENLAND = L.marker([78.94804, -21.36022]).addTo(map);
+    NE_GREENLAND.bindPopup("<a href=\"North_East_Greenland.html\">See Fence Diagram</a>");//.openPopup();
+
+    var NW_GREENLAND = L.marker([78.10965, -68.63128]).addTo(map);
+    NW_GREENLAND.bindPopup("<a href=\"North_West_Greenland.html\">See Fence Diagram</a>");//.openPopup();
+
+</script>
+
+
+</html>
